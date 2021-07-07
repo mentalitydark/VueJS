@@ -31,7 +31,6 @@
     }
     .navbar-item {
         transition: 0.3s;
-        animation-duration: 0.3s;
     }
     @media screen and (max-width: 1023px){
         #navMenu {
@@ -46,18 +45,20 @@
         }
         .is-active{
             float: right;
+            position: absolute;
+            right: 0px;
         }
     }
     @keyframes navbar-move {
         0% {
-            position: relative;
-            right: -500px;
+            position: absolute;
+            right: -200px;
             z-index: -1;
         }
         100%{
-            position: relative;
+            position: absolute;
             right: 0px;
-            z-index: 0;
+            z-index: 1;
         }
     }
 </style>

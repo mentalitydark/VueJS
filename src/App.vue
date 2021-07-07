@@ -1,10 +1,11 @@
 <template>
-  <div id="app" class="">
+  <div id="app" class="is-dark">
     <Header></Header>
-    <div v-for="(alimento, index) in alimentos" :key="index" class="">
-      <Alimento :id="alimento.id" :nome="alimento.nome" :calorias="alimento.calorias" :carboidratos="alimento.carboidratos"
-      :proteinas="alimento.proteinas" :gorduras="alimento.gorduras" :fibras="alimento.fibras" :sodio="alimento.sodio" :calcio="alimento.calcio"
-      :ferro="alimento.ferro" :fosforo="alimento.fosforo" :magnesio="alimento.magnesio" :selenio="alimento.selenio" :potassio="alimento.potassio"/>
+    <div class="container is-mobile is-flex is-flex-direction-row is-flex-wrap-wrap light">
+      <div v-on:click="showElement" v-for="(alimento, index) in alimentos" :key="index" class="column border-line min-w">
+        <Alimento :id="alimento.id" :nome="alimento.nome" :calorias="alimento.calorias" :carboidratos="alimento.carboidratos"
+        :proteinas="alimento.proteinas" :gorduras="alimento.gorduras" :fibras="alimento.fibras"/>
+      </div>
     </div>
   </div>
 </template>
@@ -38,16 +39,57 @@ export default {
   components: {
     Alimento,
     Header
+  },
+  methods: {
+    showElement: function(element) {
+      if(element.path[0].className == "column border-line min-w") {
+        if(element.path[0].firstChild.lastChild.classList.value.indexOf('animation') == -1) {
+          element.path[0].firstChild.lastChild.classList.remove('is-hidden');
+          element.path[0].firstChild.lastChild.classList.add('animation');
+        } else {
+          element.path[0].firstChild.lastChild.classList.remove('animation');
+        }
+      }
+    }
   }
 }
 </script>
 
 
 <style>
+html, body {
+  min-height: 100vh;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  background: hsl(0, 0%, 93%);
+  background-color: hsl(0, 0%, 30%);
+  min-height: 100vh;
+}
+.light {
+  background-color: hsl(0, 0%, 30%);
+  color: hsl(0, 0%, 100%);
+}
+.border-line {
+  box-sizing: border-box;
+  border: 0.1px solid rgba(0, 0, 0, 0.3);
+}
+.min-w {
+  min-width: 185px;
+}
+.min-w:hover {
+  cursor: pointer;
+  background-color: hsl(0, 0%, 40%);
+}
+@media screen and (max-width: 370px) {
+  .min-w{
+    text-align: center;
+  }
+  ::marker{
+    content: '';
+  }
 }
 </style>
