@@ -12,9 +12,9 @@
  - [ ] Service Worker
 ```
 ## _Descrição_
-```
+
 Criar um site utilizando VueJS que se conectar ao um banco de  dados (Via PHP)   solitacitando a tabela nutricional de cada alimento registrado.
-```
+
 
 ## Project setup
 ```
