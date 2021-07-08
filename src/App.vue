@@ -1,10 +1,13 @@
 <template>
   <div id="app" class="is-dark">
-    <Header></Header>
-    <div class="container is-mobile is-flex is-flex-direction-row is-flex-wrap-wrap light">
-      <div v-on:click="showElement" v-for="(alimento, index) in alimentos" :key="index" class="column border-line min-w">
-        <Alimento :id="alimento.id" :nome="alimento.nome" :calorias="alimento.calorias" :carboidratos="alimento.carboidratos"
-        :proteinas="alimento.proteinas" :gorduras="alimento.gorduras" :fibras="alimento.fibras"/>
+    <Header :method="changePage"></Header>
+    <div v-if="page == 1"><h1>olá</h1></div>
+    <div v-if="page == 2">
+      <div class="container is-mobile is-flex is-flex-direction-row is-flex-wrap-wrap light">
+        <div v-on:click="showElement" v-for="(alimento, index) in alimentos" :key="index" class="column border-line min-w">
+          <Alimento :id="alimento.id" :nome="alimento.nome" :calorias="alimento.calorias" :carboidratos="alimento.carboidratos"
+          :proteinas="alimento.proteinas" :gorduras="alimento.gorduras" :fibras="alimento.fibras"/>
+        </div>
       </div>
     </div>
   </div>
@@ -28,7 +31,8 @@ export default {
   name: 'App',
   data(){
     return {
-      alimentos: []
+      alimentos: [],
+      page: 1
     }
   },
   created: function(){
@@ -50,6 +54,9 @@ export default {
           element.path[0].firstChild.lastChild.classList.remove('animation');
         }
       }
+    },
+    changePage: function(page) {
+      this.page = page;
     }
   }
 }

@@ -11,9 +11,9 @@
             </div>
             <div id="navMenu" class="navbar-menu">
                 <div class="navbar-end">
-                    <a href="#" class="navbar-item">Alimentos</a>
-                    <a href="#" class="navbar-item">Calorias</a>
-                    <a href="#" class="navbar-item">Quanto consumi</a>
+                    <a @click="change(2)" class="navbar-item">Alimentos</a>
+                    <a @click="change(1)" class="navbar-item">Calorias</a>
+                    <a @click="change(3)" class="navbar-item">Quanto consumi</a>
                 </div>
             </div>
         </div>
@@ -21,6 +21,17 @@
 </template>
 
 <script>
+
+export default{
+    props: {
+        method: Function
+    },
+    methods: {
+        change(page) {
+            this.method(page);
+        }
+    }
+}
 
 </script>
 
